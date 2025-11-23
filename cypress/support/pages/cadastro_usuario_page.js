@@ -28,7 +28,7 @@ export default {
    },
 
    fillPassword(password) {
-        cy.get('#passwordX').type(password)
+        cy.get('#passwordXX').type(password)
    },
 
    successMessageValid(name) {
