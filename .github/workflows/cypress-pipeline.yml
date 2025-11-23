@@ -28,6 +28,7 @@ jobs:
         - name: Run tests
           uses: cypress-io/github-action@v6
           with:
+            install: false
             record: true
           env:
             CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
