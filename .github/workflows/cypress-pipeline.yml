@@ -28,5 +28,12 @@ jobs:
         - name: Run tests
           run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
           
+        # uploud do relatório do mocha
+        - name: upload relatorio
+          uses: actions/upload-artifact@v4
+          with:
+            name: Relatório
+            path: cypress\reports\html
+
 
 
