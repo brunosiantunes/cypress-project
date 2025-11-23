@@ -1,0 +1,36 @@
+# nome da pipeline
+name: Run Basic Tests
+
+# em que momento será executada
+on:
+    pull_request: 
+        branches: [master]
+
+# o que vai ser feito nessa pipeline
+# nesse caso, só teremos um job: rodar os testes
+jobs:
+    cypress-run:
+        # maquina que será executado
+        runs-on: ubuntu-latest
+
+# passo a passo para rodar os testes        
+    steps:
+        # clone do projeto
+        - name: Checkout Project
+        # usar uma action pré pronta
+        uses: actions/checkout@v3
+
+        # exemplo de execuçao no terminal
+        # - name: install project dependencies
+        #   run: echo bruno 
+
+    # execução e config do projeto 
+        - name: Run tests
+        uses: cypress-io/github-action@v6
+        with:
+            record: true
+        env:
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
+
+
+
