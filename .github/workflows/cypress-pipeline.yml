@@ -1,15 +1,14 @@
 # nome da pipeline
-- name: Run Basic Tests
-  run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
-  
+name: Run Basic Tests
+
 # em que momento será executada
- on:
+on:
     pull_request: 
         branches: ["master"]
 
 # o que vai ser feito nessa pipeline
 # nesse caso, só teremos um job: rodar os testes
- jobs:
+jobs:
     cypress-run:
         # maquina que será executado
         runs-on: ubuntu-latest
@@ -27,12 +26,8 @@
 
         # execução e config do projeto 
         - name: Run tests
-          uses: cypress-io/github-action@v6
-          with:
-            install: false
-            record: true
-          env:
-            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+          
 
 
 
