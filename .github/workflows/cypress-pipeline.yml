@@ -21,16 +21,12 @@ jobs:
           uses: actions/checkout@v3
 
         # exemplo de execuçao no terminal
-        # - name: install project dependencies
-        #   run: echo bruno 
+        - name: install project dependencies
+          run: npm install
 
         # execução e config do projeto 
         - name: Run tests
-          uses: cypress-io/github-action@v6
-          with:
-            record: true
-          env:
-            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
+          run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+          
 
 
